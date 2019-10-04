@@ -1,2 +1,2 @@
 # AnroidBook
-Этот репризиторий сооздан в целях работы с книгой Android for Professionall
+Этот репризиторий создан в целях работы с книгой Android for Professionall
