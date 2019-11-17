@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Timer</string>
+    <string name="text_timer">0:00:0</string>
+    <string name="start">Старт</string>
+    <string name="pause">Пауза</string>
+    <string name="drop">Сброс</string>
+</resources>

@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">CafeOder</string>
+    <string name="logo_description">Логотип кафе</string>
+    <string name="welcome">Добро пожаловать</string>
+    <string name="hint_login">Введите логин</string>
+    <string name="hint_password">Введите пароль</string>
+    <string name="create_order">Создать заказ</string>
+    <string name="write_fields">Все поля должны заполнены</string>
+    <string name="hello_user">Привет, %s! что будете заказывать?</string>
+    <string name="tea">Чай</string>
+    <string name="coffee">Кофе</string>
+    <string name="additions">Что добавить в ваш %s?</string>
+    <string name="milk">Молоко</string>
+    <string name="sugar">Сахар</string>
+    <string name="lemon">Лимон</string>
+    <string name="choose_drink">Выберите вид напитка</string>
+    <string name="button_send_description">Отправить заказ</string>
+    <string name="default_login">admin</string>
+    <string name="default_password">admin</string>
+    <string name="order">Имя: %s\nПароль: %s\nНапиток: %s\nВид напитка: %s</string>
+    <string name="need_additions">Необходимые добавки:</string>
+
+    <string-array name="options_of_coffee">
+        <item>Американо</item>
+        <item>Латте</item>
+        <item>Экспрессо</item>
+    </string-array>
+
+    <string-array name="options_of_tea">
+        <item>Черный</item>
+        <item>Зеленый</item>
+        <item>Красный</item>
+    </string-array>
+</resources>
