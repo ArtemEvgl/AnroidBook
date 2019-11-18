@@ -1,4 +1,4 @@
-package com.my.criminalintent;
+package com.my.criminalintent.data;
 
 import java.util.Date;
 import java.util.UUID;
