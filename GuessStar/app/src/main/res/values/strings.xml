@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Guess Star</string>
+    <string-array name="names">
+        <item>Anna Akhmatova</item>
+        <item>Sandra Bullock</item>
+        <item>Cameron Diaz</item>
+        <item>Nicole Kidman</item>
+        <item>Penelopa Cruz</item>
+        <item>Jennifer Lopez</item>
+        <item>Madonna</item>
+        <item>Neil Armstrong</item>
+        <item>Johann Bach</item>
+        <item>Ivan Bunin</item>
+        <item>Ingmar Bergman</item>
+        <item>David Beckham</item>
+        <item>Vincent van Gogh</item>
+        <item>Richard Wagne</item>
+    </string-array>
+</resources>
