@@ -14,10 +14,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.my.criminalintent.activityes.CrimePagerActivity;
 import com.my.criminalintent.data.Crime;
 import com.my.criminalintent.data.CrimeLab;
 import com.my.criminalintent.R;
-import com.my.criminalintent.activityes.CrimeActivity;
 
 import java.text.DateFormat;
 import java.util.List;
@@ -61,7 +61,7 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getUUID());
+            Intent intent = CrimePagerActivity.newIntent(getActivity(), mCrime.getUUID());
             startActivity(intent);
         }
     }

@@ -16,7 +16,6 @@ import android.widget.EditText;
 
 import com.my.criminalintent.data.Crime;
 import com.my.criminalintent.R;
-import com.my.criminalintent.activityes.CrimeActivity;
 import com.my.criminalintent.data.CrimeLab;
 
 import java.util.UUID;
