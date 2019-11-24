@@ -6,8 +6,10 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -20,7 +22,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,9 +32,12 @@ public class MainActivity extends AppCompatActivity {
     private Button mButtonVar2;
     private Button mButtonVar3;
 
-    ArrayList<String> names;
-    ArrayList<Bitmap> images;
+    private ArrayList<String> names;
+    private ArrayList<Bitmap> images;
+    private ArrayList<Button> mButtons;
 
+    private int numberOfQuestion;
+    private int numberOfRightQuestionOnButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,20 +47,60 @@ public class MainActivity extends AppCompatActivity {
         mButtonVar1 = findViewById(R.id.button_var1);
         mButtonVar2 = findViewById(R.id.button_var2);
         mButtonVar3 = findViewById(R.id.button_var3);
+        mButtons = new ArrayList<>();
+        mButtons.add(mButtonVar0);
+        mButtons.add(mButtonVar1);
+        mButtons.add(mButtonVar2);
+        mButtons.add(mButtonVar3);
         mImageStar = findViewById(R.id.imageStar);
         getContent();
+        playGame();
+    }
 
+    private void playGame() {
+        generateQuestion();
+        mImageStar.setImageBitmap(images.get(numberOfQuestion));
+        for(int i = 0; i < mButtons.size(); i++) {
+            if(i == numberOfRightQuestionOnButton) {
+                mButtons.get(i).setText(names.get(numberOfQuestion));
+            } else {
+                int wrongAnswer = generateWrongAnswer();
+                mButtons.get(i).setText(names.get(wrongAnswer));
+            }
+        }
+    }
 
+    private void generateQuestion() {
+         numberOfQuestion = (int) (Math.random() * names.size());
+         numberOfRightQuestionOnButton = (int) (Math.random() * mButtons.size());
+    }
+
+    private int generateWrongAnswer() {
+        return (int) (Math.random() * names.size());
     }
 
     private void getContent() {
         LoadImage loadImage = new LoadImage();
+        LoadDescriptions loadDescriptions = new LoadDescriptions();
         try {
             images = loadImage.execute().get();
+            names = loadDescriptions.execute().get();
+            Log.i("TAG", names.get(10));
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void onClickAnswer(View view) {
+        playGame();
+        Button button = (Button) view;
+        int tag = Integer.parseInt(button.getTag().toString());
+        if(tag == numberOfRightQuestionOnButton) {
+            Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Uncorrect, correct is " + names.get(numberOfQuestion), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -105,10 +149,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    class LoadName extends AsyncTask<Void, Void, String> {
+    class LoadDescriptions extends AsyncTask<Void, Void, ArrayList<String>> {
         @Override
-        protected String doInBackground(Void... voids) {
+        protected ArrayList<String> doInBackground(Void... voids) {
             Document doc = null;
+            ArrayList<String> resultDescriptions = new ArrayList<>();
             try {
                 doc = Jsoup.connect("http://posh24.se/kandisar").get();
             } catch (IOException e) {
@@ -117,9 +162,14 @@ public class MainActivity extends AppCompatActivity {
 //            Element el = doc.select("img").first();
 //            String img = el.absUrl("src");
 //            String img2 = el.attr("alt");
-            Element e1 = doc.select("div.image img").first();
-            String name = e1.attr("alt");
-            return name;
+            Elements descriptions = doc.select("div.image img");
+            Element descreption = null;
+            for(int i = 0; i < descriptions.size(); i++) {
+                descreption = descriptions.get(i);
+                String result = descreption.attr("alt");
+                resultDescriptions.add(result);
+            }
+            return resultDescriptions;
         }
     }
 }
