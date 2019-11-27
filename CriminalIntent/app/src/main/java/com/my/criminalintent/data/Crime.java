@@ -37,6 +37,10 @@ public class Crime {
         return mTitle;
     }
 
+    public void setDate(Date date) {
+        mDate = date;
+    }
+
     public void setTitle(String title) {
         mTitle = title;
     }

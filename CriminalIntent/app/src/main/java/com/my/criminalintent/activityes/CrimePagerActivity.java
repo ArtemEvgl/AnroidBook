@@ -46,7 +46,7 @@ public class CrimePagerActivity extends AppCompatActivity {
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
             @Override
             public Fragment getItem(int position) {
-                Crime crime = mCrimeList.get(position);
+                Crime crime = mCrimeList.get(position); // используется для подгрузки и плавного пролистывания итемов.
                 return CrimeFragment.newInstance(crime.getUUID());
             }
 
