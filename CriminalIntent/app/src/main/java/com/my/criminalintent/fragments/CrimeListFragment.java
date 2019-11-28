@@ -17,14 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.my.criminalintent.data.Crime;
 import com.my.criminalintent.data.CrimeLab;
 import com.my.criminalintent.R;
-import com.my.criminalintent.activityes.CrimeActivity;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 public class CrimeListFragment extends Fragment {
 
