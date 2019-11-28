@@ -36,7 +36,7 @@ public class CrimePagerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         UUID crimeId = (UUID) getIntent().getSerializableExtra(EXTRA_CRIME_ID);
 
-        setContentView(R.layout.activity_crime_pager2);
+        setContentView(R.layout.activity_crime_pager);
         mViewPager = findViewById(R.id.crime_view_pager);
         mButtonFirst = findViewById(R.id.button_first);
         mButtonLast = findViewById(R.id.button_last);
